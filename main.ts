@@ -1,4 +1,13 @@
-basic.showIcon(IconNames.Yes)
+input.onButtonPressed(Button.A, function () {
+    robotbit.MotorRun(robotbit.Motors.M1A, -165)
+})
+input.onButtonPressed(Button.AB, function () {
+    robotbit.MotorStopAll()
+})
+input.onButtonPressed(Button.B, function () {
+    robotbit.MotorRun(robotbit.Motors.M2B, -165)
+})
+basic.showIcon(IconNames.Happy)
 let strip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
 robotbit.MotorStopAll()
 strip.clear()
