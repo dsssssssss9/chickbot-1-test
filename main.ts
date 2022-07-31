@@ -1,13 +1,42 @@
-input.onButtonPressed(Button.A, function () {
-    robotbit.MotorRun(robotbit.Motors.M1A, -165)
+radio.onReceivedNumber(function (receivedNumber) {
+    if (receivedNumber == 0) {
+        All_Stop()
+    } else if (receivedNumber == 1) {
+        All_Fwd()
+    } else if (receivedNumber == 2) {
+        All_Rev()
+    }
 })
+input.onButtonPressed(Button.A, function () {
+	
+})
+function All_Rev () {
+    robotbit.MotorRunDual(
+    robotbit.Motors.M1A,
+    -99,
+    robotbit.Motors.M2B,
+    -94
+    )
+}
+function All_Fwd () {
+    robotbit.MotorRunDual(
+    robotbit.Motors.M1A,
+    68,
+    robotbit.Motors.M2B,
+    68
+    )
+}
 input.onButtonPressed(Button.AB, function () {
-    robotbit.MotorStopAll()
+	
 })
 input.onButtonPressed(Button.B, function () {
-    robotbit.MotorRun(robotbit.Motors.M2B, -165)
+	
 })
-basic.showIcon(IconNames.Happy)
+function All_Stop () {
+    robotbit.MotorStopAll()
+}
+radio.setGroup(3)
+basic.showIcon(IconNames.StickFigure)
 let strip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
 robotbit.MotorStopAll()
 strip.clear()
